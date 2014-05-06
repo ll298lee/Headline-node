@@ -86,4 +86,4 @@ var pullRss = function(){
 
 
 
-module.exports = new CronJob('*/5 * * * * *', pullRss, null, false);
+module.exports = new CronJob('00 00 * * * *', pullRss, null, false);
