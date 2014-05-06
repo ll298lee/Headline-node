@@ -17,5 +17,5 @@ require('./app/routes')(app);
 
 //start the app ================================
 var port = process.env.PORT || settings.httpPort;
-app.listen(port);
+app.listen(port, '127.0.0.1');
 console.log('Start server on port: ' + port);
