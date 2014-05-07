@@ -13,7 +13,7 @@ var pressList = require('../../config/pressList');
 
 
 var requestAndSave = function(pressCode, rss){
-  console.log("start pulling rss from "+ pressCode);
+  console.log("start pulling rss from "+ rss.rssCode);
   var link = rss.url;
   var rssCode = rss.rssCode;
   var req = request(link);
@@ -78,12 +78,9 @@ var pullRss = function(){
   for (var i in pressList){
     var press = pressList[i];
     for(var j in press.rssList){
-      requestAndSave(press.pressCode, press.rssList[i]);
+      requestAndSave(press.pressCode, press.rssList[j]);
     }
   }
 }
-
-
-
 
 module.exports = new CronJob('00 00 * * * *', pullRss, null, false);

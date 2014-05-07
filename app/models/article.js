@@ -18,6 +18,22 @@ var ArticleSchema = new Schema({
     views: Number,
     shares: Number
   }
+},{ versionKey: false,
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true }
 });
+
+
+ArticleSchema.virtual('id').get(function () {
+  return this._id;
+});
+
+ArticleSchema.methods.toJSON = function() {
+  var obj = this.toObject()
+  delete obj._id;
+  return obj;
+}
+
+
 
 module.exports = mongoose.model('Article', ArticleSchema);

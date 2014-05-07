@@ -12,7 +12,7 @@ for(var i in ctrl_files){
 
 module.exports = function(app){
   var router = express.Router();
-  router.get('/article', ctrls.article.get_all);
+  router.get('/article', ctrls.article.get_article);
 
   
   app.use('/api', router);

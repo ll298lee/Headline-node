@@ -9,12 +9,12 @@ module.exports = [
           rssCode: 1000
       },
       {
-          url:'http://udn.com/udnrss/BREAKINGNEWS4.xml',
-          name: 'cs_international',
+          url:'http://udn.com/udnrss/mainland.xml',
+          name: 'cs',
           rssCode: 1001
       },
       {
-          url:'http://udn.com/udnrss/BREAKINGNEWS6.xml',
+          url:'http://udn.com/udnrss/financesfocus.xml',
           name: 'finance',
           rssCode: 1002
       },
@@ -27,6 +27,16 @@ module.exports = [
           url:'http://udn.com/udnrss/opinion.xml',
           name: 'opinion',
           rssCode: 1004
+      },
+      {
+          url:'http://udn.com/udnrss/international.xml',
+          name: 'international',
+          rssCode: 1005
+      },
+      {
+          url:'http://travel.udn.com/udnrss/travel_rss.xml',
+          name: 'travel_food',
+          rssCode: 1006
       }
     ]
   },
@@ -76,6 +86,47 @@ module.exports = [
       },
     ]
   },
+  {
+    pressName: 'chinapost',
+    pressCode: 102,
+    rssList:[
+      {
+          url:'http://www.chinatimes.com/rss/realtimenews.xml',
+          name: 'latest',
+          rssCode: 1020
+      },
+      {
+          url:'http://www.chinatimes.com/rss/realtimenews-mainland.xml',
+          name: 'cs',
+          rssCode: 1021
+      },
+      {
+          url:'http://www.chinatimes.com/rss/realtimenews-finance.xml',
+          name: 'finance',
+          rssCode: 1022
+      },
+      {
+          url:'http://www.chinatimes.com/rss/realtimenews-politic.xml',
+          name: 'politics',
+          rssCode: 1023
+      },
+      {
+          url:'http://www.chinatimes.com/rss/chinatimes-comment.xml',
+          name: 'opinion',
+          rssCode: 1024
+      },
+      {
+          url:'http://www.chinatimes.com/rss/realtimenews-international.xml',
+          name: 'international',
+          rssCode: 1025
+      },
+      {
+          url:'http://www.chinatimes.com/rss/chinatimes-showbiz.xml',
+          name: 'entertainment',
+          rssCode: 1026
+      }
+    ]
+  }
 
 
 ]
