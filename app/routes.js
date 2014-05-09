@@ -12,6 +12,12 @@ for(var i in ctrl_files){
 
 module.exports = function(app){
   var router = express.Router();
+  router.use(function(req, res, next) {
+    
+    res.type('application/json');
+    next(); 
+  });
+
   router.get('/article', ctrls.article.get_article);
 
   
