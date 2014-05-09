@@ -13,8 +13,8 @@ for(var i in ctrl_files){
 module.exports = function(app){
   var router = express.Router();
   router.use(function(req, res, next) {
-    res.set('charset', 'utf-8');    
-    res.type('application/json');
+    
+    res.type('application/json; charset=utf-8');
     next(); 
   });
 
