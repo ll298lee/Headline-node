@@ -1,132 +1,139 @@
 module.exports = [
+  /*
+  * TAIWAN
+  */
   {
-    pressName: 'udn',
-    pressCode: 100,
+    pressName: 'tw_apple',
+    pressCode: 15800,
     rssList:[
       {
           url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
           name: 'domestic_latest',
-          rssCode: 1000
+          rssCode: 1580000
       },
       {
-          url:'http://udn.com/udnrss/mainland.xml',
-          name: 'cs',
-          rssCode: 1001
-      },
-      {
-          url:'http://udn.com/udnrss/financesfocus.xml',
-          name: 'finance',
-          rssCode: 1002
-      },
-      {
-          url:'http://udn.com/udnrss/politics.xml',
-          name: 'politics',
-          rssCode: 1003
-      },
-      {
-          url:'http://udn.com/udnrss/opinion.xml',
-          name: 'opinion',
-          rssCode: 1004
-      },
-      {
-          url:'http://udn.com/udnrss/international.xml',
-          name: 'international',
-          rssCode: 1005
-      },
-      {
-          url:'http://travel.udn.com/udnrss/travel_rss.xml',
-          name: 'travel_food',
-          rssCode: 1006
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580001
       }
     ]
   },
   {
-    pressName: 'apple',
-    pressCode: 101,
+    pressName: 'tw_nownews',
+    pressCode: 15801,
     rssList:[
       {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new',
-          name: 'latest',
-          rssCode: 1010
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/101',
-          name: 'politics',
-          rssCode: 1011
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/104',
-          name: 'finance',
-          rssCode: 1012
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/102',
-          name: 'social',
-          rssCode: 1013
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/113',
-          name: 'opinion',
-          rssCode: 1014
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/114',
-          name: 'hot_girl',
-          rssCode: 1015
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/106',
-          name: 'entertainment',
-          rssCode: 1016
-      },
-      {
-          url:'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/103',
-          name: 'international',
-          rssCode: 1017
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580100
+      }
     ]
   },
   {
-    pressName: 'chinapost',
-    pressCode: 102,
+    pressName: 'tw_udn',
+    pressCode: 15802,
     rssList:[
       {
-          url:'http://www.chinatimes.com/rss/realtimenews.xml',
-          name: 'latest',
-          rssCode: 1020
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580200
+      }
+    ]
+  },
+  {
+    pressName: 'tw_liberty',
+    pressCode: 15803,
+    rssList:[
       {
-          url:'http://www.chinatimes.com/rss/realtimenews-mainland.xml',
-          name: 'cs',
-          rssCode: 1021
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580300
+      }
+    ]
+  },
+  {
+    pressName: 'tw_chinapost',
+    pressCode: 15804,
+    rssList:[
       {
-          url:'http://www.chinatimes.com/rss/realtimenews-finance.xml',
-          name: 'finance',
-          rssCode: 1022
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580400
+      }
+    ]
+  },
+  {
+    pressName: 'tw_storm',
+    pressCode: 15805,
+    rssList:[
       {
-          url:'http://www.chinatimes.com/rss/realtimenews-politic.xml',
-          name: 'politics',
-          rssCode: 1023
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580500
+      }
+    ]
+  },
+  {
+    pressName: 'tw_newtalk',
+    pressCode: 15806,
+    rssList:[
       {
-          url:'http://www.chinatimes.com/rss/chinatimes-comment.xml',
-          name: 'opinion',
-          rssCode: 1024
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580600
+      }
+    ]
+  },
+  {
+    pressName: 'tw_cna',
+    pressCode: 15807,
+    rssList:[
       {
-          url:'http://www.chinatimes.com/rss/realtimenews-international.xml',
-          name: 'international',
-          rssCode: 1025
-      },
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580700
+      }
+    ]
+  },
+  {
+    pressName: 'tw_bbc',
+    pressCode: 15808,
+    rssList:[
       {
-          url:'http://www.chinatimes.com/rss/chinatimes-showbiz.xml',
-          name: 'entertainment',
-          rssCode: 1026
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580800
+      }
+    ]
+  },
+  {
+    pressName: 'tw_cnyes',
+    pressCode: 15809,
+    rssList:[
+      {
+          url:'http://udn.com/udnrss/BREAKINGNEWS1.xml',
+          name: 'domestic_latest',
+          rssCode: 1580900
       }
     ]
   }
-
-
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
