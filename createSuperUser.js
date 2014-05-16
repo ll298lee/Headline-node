@@ -7,6 +7,7 @@ mongoose.connect(db.url);
 
 var username = process.argv[2];
 var password = process.argv[3];
+var not_super_user = process.argv[4];
 
 console.log("username: "+ username);
 console.log("password: "+ password);
@@ -22,12 +23,13 @@ if(!isPasswordValid.isValid){
   process.exit(0);
 }
 
+var is_super_user = !(not_super_user=="normal");
 
 // create a user a new user
 var newUser = new User({
     username: username,
     password: password,
-    superuser: true
+    superuser: is_super_user
 });
 
 // save user to database
