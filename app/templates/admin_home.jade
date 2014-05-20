@@ -1,4 +1,15 @@
 extends admin_base
+
 block content
-  p you are in!
-  a(href='/optadmin/logout') Logout
+  .container
+    .panel.panel-default
+      .panel-heading #{dbName}
+      table.table.table-striped
+        - for (var i = 0; i < collections.length; ++i) {
+          tr 
+            td
+              a(href='/optadmin/collection/#{collections[i]}')=collections[i]
+        - }
+        
+          
+    

@@ -1,17 +1,31 @@
 doctype html
-html(lang="en")
+- var ng_app = '';
+block vars
+
+html(lang="en", ng-app="#{ng_app}")
   head
     title #{title}
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
-    script(src='/js/jquery.min.js')
-    script(src='/js/bootstrap.min.js')
+    script(src='/js/lib/jquery.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='/js/lib/angular.min.js')
+    script(src='/js/admin_rss.js')
     
   body
-    #header.
-      this is header
+    #header.navbar.navbar-default.navbar-fexed-top
+      .container
+        .navbar-header
+          a.navbar-brand Admin console
+        .navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            block navbar_right 
+              li
+                a(href='/optadmin/logout') Logout
+
+
+      
     #content
       block content
-    #footer.
-      this is footer
+    
           

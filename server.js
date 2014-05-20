@@ -15,16 +15,15 @@ app.set('views', __dirname + '/app/templates');
 app.set('view engine', 'jade');
 app.use(bodyParser());
 app.use(cookieParser(settings.cookie_parser_secret));
-var db = require('./config/db');
-var mongoosedb = mongoose.connect(db.url);
 
+var mongoosedb = mongoose.connect(settings.database.url);
 var MongoStore = require('connect-mongo')(session);
 app.use(session({
   cookie: {maxAge: settings.sesstion_max_age},
   secret: settings.session_cookie_secret,
   store: new MongoStore({
-    db: db.db,
-    host: db.host,
+    db: settings.database.db,
+    host: settings.database.host,
     mongoose_connection: mongoosedb.connections[0]
   })
 }));

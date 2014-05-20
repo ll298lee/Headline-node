@@ -31,11 +31,15 @@ module.exports = function(app){
   */
   veiew_router.get('/', ctrls.globals.not_found);
   veiew_router.get('/sass*', ctrls.globals.to_home); //exclude /sass from public route
+  
+  //admins
+  veiew_router.param('collection', ctrls.admin.admin_param_collection);
+  veiew_router.use('/optadmin', ctrls.admin.admin_superuser_auth);
   veiew_router.get('/optadmin',ctrls.admin.admin_home);
   veiew_router.get('/optadmin/login',ctrls.admin.admin_login);
-  veiew_router.post('/optadmin/login', passport.authenticate('local',{ session: true }), function(req, res) {
-      res.redirect('/optadmin');
-  });
+  veiew_router.get('/optadmin/collection/:collection',ctrls.admin.admin_doc_list);
+  veiew_router.get('/optadmin/rsslist',ctrls.admin.admin_rss_list);
+  veiew_router.post('/optadmin/login', passport.authenticate('local',{ session: true,successRedirect: '/optadmin', failureRedirect: '/optadmin/login' }));
   app.get('/optadmin/logout', ctrls.admin.admin_logout);
 
 

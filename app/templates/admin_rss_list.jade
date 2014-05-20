@@ -1,0 +1,78 @@
+extends admin_base
+block vars
+  - var ng_app = 'admin_rss';
+
+block content
+  .container(ng-controller="mainCtrl")
+    p
+      button.btn.btn-primary(modal-trigger="#createNewModal")
+        span.glyphicon.glyphicon-file
+        span &nbsp;Create
+        
+    p  
+      .row
+        .col-lg-12
+          .input-group
+            .input-group-btn
+              button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown") {{currentSearchField}} 
+                span.caret
+              ul.dropdown-menu
+                li(ng-repeat="field in searchFields")
+                  a(href="#", ng-click="selectSearchField($index)") {{field}}
+                
+              
+
+            input.form-control(type="text" ng-model="searchKey")
+        
+        
+    
+      
+    p    
+      .row  
+        .col-lg-12   
+          .panel.panel-default
+            .panel-heading RSS Objects
+            table.table.table-striped
+              tr 
+                td
+                  a(href='#') aaa
+              tr 
+                td
+                  a(href='#') aaa
+                  
+              tr 
+                td
+                  a(href='#') aaa 
+
+    #createNewModal.modal(ng-controller="createNewModalCtrl")
+      .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+              h4.modal-title Create new RSS source
+            .modal-body 
+              form(role='form')
+                .form-group
+                    label Press code
+                    input.form-control(type='text', placeholder='Enter press code' ng-model="pressCode")
+                .form-group
+                    label Rss name
+                    input.form-control(type='text', placeholder='Enter rss name' ng-model="rssName")      
+                .form-group
+                    label Url
+                    input.form-control(type='text', placeholder='Enter rss url' ng-model="rssUrl")
+                
+
+
+
+              
+
+
+              
+            .modal-footer
+              a.btn(href='#', data-dismiss='modal') Close
+              a.btn.btn-primary(href='#', ng-click="create()") Save              
+
+
+
+            
