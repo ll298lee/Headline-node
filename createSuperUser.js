@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var db = require('./config/db');
+var settings = require('./config/settings')
 var User = require('./app/models/user.js');
-mongoose.connect(db.url);
+mongoose.connect(settings.database.url);
 
 
 
