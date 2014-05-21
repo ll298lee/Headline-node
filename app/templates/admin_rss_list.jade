@@ -22,10 +22,7 @@ block content
                 
               
 
-            input.form-control(type="text" ng-model="searchKey")
-        
-        
-    
+            input.form-control(type="text" ng-model="searchKey" ng-change="query()")
       
     p    
       .row  
@@ -33,16 +30,24 @@ block content
           .panel.panel-default
             .panel-heading RSS Objects
             table.table.table-striped
-              tr 
+              tr
+                td id
+                td Press code
+                td Rss code
+                td Rss name
+                td Rss url
+              tr(ng-repeat="rss in rssList", modal-trigger="#detailModal")
                 td
-                  a(href='#') aaa
-              tr 
+                  a(href='#') {{rss.id}} 
                 td
-                  a(href='#') aaa
-                  
-              tr 
+                  a(href='#') {{rss.press_code}} 
                 td
-                  a(href='#') aaa 
+                  a(href='#') {{rss.rss_code}}
+                td
+                  a(href='#') {{rss.name}}
+                td
+                  a(href='#') {{rss.url}}    
+              
 
     #createNewModal.modal(ng-controller="createNewModalCtrl")
       .modal-dialog
@@ -56,22 +61,45 @@ block content
                     label Press code
                     input.form-control(type='text', placeholder='Enter press code' ng-model="pressCode")
                 .form-group
+                    label Rss code
+                    input.form-control(type='text', placeholder='Enter rss code' ng-model="rssCode")            
+                .form-group
                     label Rss name
                     input.form-control(type='text', placeholder='Enter rss name' ng-model="rssName")      
                 .form-group
                     label Url
                     input.form-control(type='text', placeholder='Enter rss url' ng-model="rssUrl")
-                
-
-
-
-              
-
-
               
             .modal-footer
               a.btn(href='#', data-dismiss='modal') Close
-              a.btn.btn-primary(href='#', ng-click="create()") Save              
+              a.btn.btn-primary(href='#', ng-click="create()") Save 
+
+    #detailModal.modal(ng-controller="detailModalCtrl")
+      .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+              h4.modal-title RSS source detail
+            .modal-body 
+              form(role='form')
+                .form-group
+                    label Press code
+                    input.form-control(type='text', placeholder='Enter press code' ng-model="pressCode")
+                .form-group
+                    label Rss code
+                    input.form-control(type='text', placeholder='Enter rss code' ng-model="rssCode")            
+                .form-group
+                    label Rss name
+                    input.form-control(type='text', placeholder='Enter rss name' ng-model="rssName")      
+                .form-group
+                    label Url
+                    input.form-control(type='text', placeholder='Enter rss url' ng-model="rssUrl")
+              
+            .modal-footer
+              a.btn(href='#', data-dismiss='modal') Close
+              a.btn.btn-primary(href='#', ng-click="deleteModel()") Delete                        
+              a.btn.btn-primary(href='#', ng-click="update()") Update                        
+
 
 
 

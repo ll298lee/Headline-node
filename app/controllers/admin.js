@@ -12,6 +12,15 @@ module.exports = {
     }
   },
 
+  admin_superuser_api_auth: function(req, res, next){
+    var excludePath = [];
+    if(excludePath.indexOf(req.path) > -1 || (req.user && req.user.superuser)){
+      next();
+    }else{
+      res.send(403);
+    }
+  },
+
 
   admin_home: function(req, res){
     mongoose.connection.db.collectionNames(function (err, names) {

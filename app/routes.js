@@ -23,6 +23,18 @@ module.exports = function(app){
     next(); 
   });
 
+  //rss_source
+  api_router.param('id', function(req, res, next, id){
+    req.obj_id = id;
+    next();
+  });
+  api_router.use('/rss_source', ctrls.admin.admin_superuser_api_auth);
+  api_router.post('/rss_source', ctrls.rss_source.create);
+  api_router.get('/rss_source', ctrls.rss_source.get);
+  api_router.delete('/rss_source/:id', ctrls.rss_source.delete);
+  api_router.post('/rss_source/:id', ctrls.rss_source.update);
+
+  //article
   api_router.get('/article', ctrls.article.get_article);
   
 

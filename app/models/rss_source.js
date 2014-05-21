@@ -7,11 +7,6 @@ var RssSchema = new Schema({
   rss_code: Number,
   url: String
   
-
-  
-
-
-  
   
 },{ versionKey: false,
     toObject: { virtuals: true },
