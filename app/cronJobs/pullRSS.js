@@ -6,9 +6,9 @@ var Article = require('../models/article');
 var pressList = require('../../config/pressList');
 
 
-module.exports = function(mongoose){
+module.exports = function(mongoose , queue){
   var requestAndSave = function(rss){
-    console.log("start pulling rss from "+ rss.rss_code);
+    //console.log("start pulling rss from "+ rss.rss_code);
     var link = rss.url;
     var pressCode = rss.press_code
     var rssCode = rss.rss_code;
@@ -72,15 +72,27 @@ module.exports = function(mongoose){
     });
   };
 
+
+  var newTask = function(rss_source){
+    var task = queue.create('requestRssAndSave', rss_source);
+    task.save();
+  }
+
+  queue.process('requestRssAndSave', function (job, done){
+    requestAndSave(job.data);
+    done && done();
+  })
+
+
   var pullRss = function(){
     var query = RssSource.find({});
     query.exec(function(err, results){
       for(var i in results){
-        requestAndSave(results[i]);
+        newTask(results[i]);
       }
     });
   }
-  return new CronJob('00 00 * * * *', pullRss, null, false);
+  return new CronJob('00 15 * * * *', pullRss, null, false);
 }
 
 
