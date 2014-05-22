@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
   press: Number,
-  category: Number,
+  category: {type: Number, index: true },
   title: String,
   link: String,
   date: {type: Date, default: Date.now },
