@@ -89,7 +89,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 10 * * * *', pullRss, null, false);
+  return new CronJob('00 21 * * * *', pullRss, null, false);
 }
 
 
