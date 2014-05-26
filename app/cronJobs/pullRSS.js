@@ -3,7 +3,7 @@ var FeedParser = require('feedparser');
 var request = require('request');
 var RssSource = require('../models/rss_source');
 var Article = require('../models/article');
-var pressList = require('../../config/pressList');
+var rssUtils = require('../utils/rssUtils');
 
 
 module.exports = function(mongoose , queue){
@@ -26,17 +26,17 @@ module.exports = function(mongoose , queue){
 
 
     feedparser.on('readable', function(){
+      var post;
+
       while(post = this.read()){
+        post = rssUtils.processPost(post, pressCode);
         var press = pressCode,
             category = rssCode,
             title = post.title,
             link = post.link,
-            date = post.pubDate,
             pubDate = post.pubDate,
-            pubdate = post.pubdate,
             author = post.author,
             description = post.description,
-            summary = post.summary,
             image = post.image,
             guid = post.guid;
 
@@ -51,12 +51,9 @@ module.exports = function(mongoose , queue){
                 category: category,
                 title: title,
                 link: link,
-                date: date,
                 pubDate: pubDate,
-                pubdate: pubdate,
                 author: author,
                 description: description,
-                summary: summary,
                 image: image,
                 guid: guid
               });
@@ -92,7 +89,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 15 * * * *', pullRss, null, false);
+  return new CronJob('*/5 * * * * *', pullRss, null, false);
 }
 
 

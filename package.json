@@ -16,6 +16,7 @@
         "cookie-parser": "~1.1.0",
         "express-session": "~1.1.0",
         "connect-mongo": "~0.4.1",
-        "kue": "~0.7.7"
+        "kue": "~0.7.7",
+        "cheerio": "~0.16.0"
     }
 }

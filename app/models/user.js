@@ -56,48 +56,6 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
 
 
 
-//STATIC METHODS
-// UserSchema.statics.authenticate = function(){
-//   var User = this;
-//   return function(username, password, done){
-//     User.findOne({ username: username }, function(err, user) {
-//         if (err) { return done(err); }
-//         if (!user) { return done(null, false); }
-
-//         // test a matching password
-//         user.comparePassword(password, function(err, isMatch) {
-//             if (err) { return done(err); }
-//             if(isMatch){
-//               return done(null, user);
-//             }else{
-//               return done(null, false);  
-//             }
-//         });
-//     });
-//   };
-
-// };
-
-// UserSchema.statics.serializeUser = function(){
-//   return function(user, done){
-//     done(null, user.id);
-//   };
-// };
-
-
-// UserSchema.statics.deserializeUser = function(){
-//   var User = this;
-//   return function(id, done){
-//     User.findById(id, function(err, user) {
-//       done(err, user);
-//     });
-//   }
-// };
-
-
-
-
-
 
 
 
