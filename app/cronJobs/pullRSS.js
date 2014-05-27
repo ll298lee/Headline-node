@@ -12,8 +12,7 @@ module.exports = function(mongoose , queue){
     var link = rss.url;
     var pressCode = rss.press_code
     var rssCode = rss.rss_code;
-    console.log(new Date());
-    console.log("start pulling: "+ rssCode);
+    console.log("start pulling: "+ rssCode + "   " + new Date());
     var req = request(link, function (error, response, body) {
       if(error){
         console.log(rssCode + ": "+ error);
@@ -26,7 +25,7 @@ module.exports = function(mongoose , queue){
       var stream = this;
       if (res.statusCode != 200){
         console.log(rssCode + ": "+ 'Bad status code');
-        return this.emit('error', new Error('Bad status code'));  
+        return this.('error', new Error('Bad status code'));  
       } 
       stream.pipe(feedparser);
     });
@@ -77,10 +76,7 @@ module.exports = function(mongoose , queue){
   };
 
 
-  var newTask = function(rss_source){
-    var task = queue.create('requestRssAndSave', rss_source);
-    task.save();
-  }
+  
 
   queue.process('requestRssAndSave', function (job, done){
     requestAndSave(job.data);
@@ -93,12 +89,14 @@ module.exports = function(mongoose , queue){
     query.exec(function(err, results){
       for(var i in results){
         setTimeout(function () {
-          newTask(results[i]);
+          console.log("add rss task: "+ results[i].rss_code);
+          var task = queue.create('requestRssAndSave', results[i]);
+          task.save();
         }, 3000);
       }
     });
   }
-  return new CronJob('00 30 * * * *', pullRss, null, false);
+  return new CronJob('00 43 * * * *', pullRss, null, false);
 }
 
 
