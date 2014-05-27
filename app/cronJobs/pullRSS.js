@@ -25,7 +25,7 @@ module.exports = function(mongoose , queue){
       var stream = this;
       if (res.statusCode != 200){
         console.log(rssCode + ": "+ 'Bad status code');
-        return this.('error', new Error('Bad status code'));  
+        return this.emit('error', new Error('Bad status code'));  
       } 
       stream.pipe(feedparser);
     });
@@ -79,24 +79,28 @@ module.exports = function(mongoose , queue){
   
 
   queue.process('requestRssAndSave', function (job, done){
-    requestAndSave(job.data);
-    done && done();
+    // setTimeout(function(){
+      // console.log(job.data.rss_code);
+      requestAndSave(job.data);
+      done && done();
+    // }, 1000);
+    
   })
 
 
   var pullRss = function(){
-    var query = RssSource.find({});
+    var query = RssSource.find({}).sort({category:-1});
     query.exec(function(err, results){
-      for(var i in results){
-        setTimeout(function () {
-          console.log("add rss task: "+ results[i].rss_code);
-          var task = queue.create('requestRssAndSave', results[i]);
+      for(var i=0;i<results.length;i++){
+          var rss = results[i].toJSON();
+          console.log("add rss task: "+ rss.rss_code);
+          var task = queue.create('requestRssAndSave', rss);
           task.save();
-        }, 3000);
+        
       }
     });
   }
-  return new CronJob('00 43 * * * *', pullRss, null, false);
+  return new CronJob('00 28 * * * *', pullRss, null, false);
 }
 
 
