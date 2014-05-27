@@ -12,6 +12,8 @@ module.exports = function(mongoose , queue){
     var link = rss.url;
     var pressCode = rss.press_code
     var rssCode = rss.rss_code;
+    console.log(new Date());
+    console.log("start pulling: "+ rssCode);
     var req = request(link, function (error, response, body) {
       if(error){
         console.log(rssCode + ": "+ error);
@@ -22,7 +24,10 @@ module.exports = function(mongoose , queue){
 
     req.on('response', function(res){
       var stream = this;
-      if (res.statusCode != 200) return this.emit('error', new Error('Bad status code'));
+      if (res.statusCode != 200){
+        console.log(rssCode + ": "+ 'Bad status code');
+        return this.emit('error', new Error('Bad status code'));  
+      } 
       stream.pipe(feedparser);
     });
 
@@ -87,11 +92,13 @@ module.exports = function(mongoose , queue){
     var query = RssSource.find({});
     query.exec(function(err, results){
       for(var i in results){
-        newTask(results[i]);
+        setTimeout(function () {
+          newTask(results[i]);
+        }, 3000);
       }
     });
   }
-  return new CronJob('00 10 * * * *', pullRss, null, false);
+  return new CronJob('00 30 * * * *', pullRss, null, false);
 }
 
 
