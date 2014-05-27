@@ -27,6 +27,7 @@ module.exports = function(mongoose , queue){
         console.log(rssCode + ": "+ 'Bad status code');
         return this.emit('error', new Error('Bad status code'));  
       } 
+      console.log(rssCode + ": "+ 'request ok');
       stream.pipe(feedparser);
     });
 
@@ -100,7 +101,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 28 * * * *', pullRss, null, false);
+  return new CronJob('00 22 * * * *', pullRss, null, false);
 }
 
 
