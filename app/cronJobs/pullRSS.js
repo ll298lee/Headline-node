@@ -13,7 +13,9 @@ module.exports = function(mongoose , queue){
     var pressCode = rss.press_code
     var rssCode = rss.rss_code;
     var req = request(link, function (error, response, body) {
-      if(error) console.log(error);
+      if(error){
+        console.log(rssCode + ": "+ error);
+      } 
     });
 
     var feedparser = new FeedParser();
@@ -89,7 +91,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 50 * * * *', pullRss, null, false);
+  return new CronJob('00 10 * * * *', pullRss, null, false);
 }
 
 
