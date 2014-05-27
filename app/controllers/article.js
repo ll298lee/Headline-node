@@ -17,7 +17,7 @@ module.exports = {
       res.json([]);
       return;
     } 
-    var query = Article.find(queryParams).sort({date: -1});
+    var query = Article.find(queryParams).sort({pubDate: -1});
 
     if(limit){
       query.limit(limit);

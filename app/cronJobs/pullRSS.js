@@ -12,7 +12,7 @@ module.exports = function(mongoose , queue){
     var link = rss.url;
     var pressCode = rss.press_code
     var rssCode = rss.rss_code;
-    console.log("start pulling: "+ rssCode + "   " + new Date());
+    // console.log("start pulling: "+ rssCode + "   " + new Date());
     var req = request(link, function (error, response, body) {
       if(error){
         console.log(rssCode + ": "+ error);
@@ -27,7 +27,7 @@ module.exports = function(mongoose , queue){
         console.log(rssCode + ": "+ 'Bad status code');
         return this.emit('error', new Error('Bad status code'));  
       } 
-      console.log(rssCode + ": "+ 'request ok');
+      // console.log(rssCode + ": "+ 'request ok');
       stream.pipe(feedparser);
     });
 
@@ -94,7 +94,7 @@ module.exports = function(mongoose , queue){
     query.exec(function(err, results){
       for(var i=0;i<results.length;i++){
           var rss = results[i].toJSON();
-          console.log("add rss task: "+ rss.rss_code);
+          // console.log("add rss task: "+ rss.rss_code);
           var task = queue.create('requestRssAndSave', rss);
           task.save();
         
