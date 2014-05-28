@@ -95,6 +95,34 @@ module.exports = {
       post.description = $.root().text().substring(0,100) +"...";
     
       return post;  
+
+    case 84000:
+      post.description = "";
+      return post;
+    case 84001:
+      post.description = "";
+      return post;
+    case 84002:
+      post.description = "";
+      return post;
+    case 84003:
+      post.description = "";
+      return post;
+    case 84004:
+      post.description = "";
+      return post;
+    case 84005:
+      post.description = "";
+      return post;
+    case 84006:
+      post.description = "";
+      return post;
+    case 84007:
+      post.description = "";
+      return post;
+    case 84008:
+      post.description = "";
+      return post;  
     default:
       return post;
     }

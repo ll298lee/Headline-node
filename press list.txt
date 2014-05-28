@@ -1,5 +1,5 @@
 
-
+// Taiwan
 蘋果 15800
 聯合 15801
 自由 15802 
@@ -8,4 +8,18 @@
 新頭殼 15805
 中央社 15806
 BBC 中文網 15807
-聚亨網 15808
+
+
+//U.S
+USA Today 84000
+NY Times 84001
+WSJ 84002
+Washington post 84003
+New York Post 84004
+nydailynews 84005
+Los Angeles Times 84006
+Reuters 84007
+Fox news 84008
+
+
+
