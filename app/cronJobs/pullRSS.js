@@ -101,7 +101,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 46 * * * *', pullRss, null, false);
+  return new CronJob('00 18 * * * *', pullRss, null, false);
 }
 
 
