@@ -17,3 +17,5 @@ for(var i in job_files){
 for(var i in jobs){
   jobs[i].start();
 }
+
+kue.app.listen(1338);

@@ -7,15 +7,18 @@ var rssUtils = require('../utils/rssUtils');
 
 
 module.exports = function(mongoose , queue){
-  var requestAndSave = function(rss){
-    //console.log("start pulling rss from "+ rss.rss_code);
+  var requestAndSave = function(rss, onDone){
+    
     var link = rss.url;
     var pressCode = rss.press_code
     var rssCode = rss.rss_code;
-    // console.log("start pulling: "+ rssCode + "   " + new Date());
+    
+
+    
     var req = request(link, function (error, response, body) {
       if(error){
         console.log(rssCode + ": "+ error);
+        onDone(new Error(rssCode + ": "+ error));
       } 
     });
 
@@ -25,17 +28,20 @@ module.exports = function(mongoose , queue){
       var stream = this;
       if (res.statusCode != 200){
         console.log(rssCode + ": "+ 'Bad status code');
-        return this.emit('error', new Error('Bad status code'));  
+       
+        return this.emit('error', new Error('Bad status code'));
       } 
-      // console.log(rssCode + ": "+ 'request ok');
+      
       stream.pipe(feedparser);
     });
 
-
+    
+    feedparser.on('end', onDone);
     feedparser.on('readable', function(){
       var post;
 
       while(post = this.read()){
+        console.log(post);
         post = rssUtils.processPost(post, pressCode);
         var press = pressCode,
             category = rssCode,
@@ -72,19 +78,27 @@ module.exports = function(mongoose , queue){
             }
           }
         );
+
+
       }
     });
+
+
   };
 
 
   
 
   queue.process('requestRssAndSave', function (job, done){
-    // setTimeout(function(){
-      // console.log(job.data.rss_code);
-      requestAndSave(job.data);
+    
+    requestAndSave(job.data, function(err){
+      if(err){
+        console.log(err);    
+      }
       done && done();
-    // }, 1000);
+    });
+      
+    
     
   })
 
@@ -101,7 +115,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 18 * * * *', pullRss, null, false);
+  return new CronJob('00 00 * * * *', pullRss, null, false);
 }
 
 
