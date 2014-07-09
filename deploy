@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+fab -f fabfile.py deploy

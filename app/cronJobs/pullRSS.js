@@ -41,7 +41,7 @@ module.exports = function(mongoose , queue){
       var post;
 
       while(post = this.read()){
-        console.log(post);
+        // console.log(post);
         post = rssUtils.processPost(post, pressCode);
         var press = pressCode,
             category = rssCode,
