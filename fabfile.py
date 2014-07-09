@@ -39,6 +39,9 @@ def restart():
 def deploy():
     checkout_latest()
     restart()
+    print yellow("Check redis status")
+    run('redis-cli ping');
+    
 
 
 
