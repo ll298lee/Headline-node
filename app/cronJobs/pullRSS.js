@@ -14,7 +14,11 @@ module.exports = function(mongoose , queue){
     var rssCode = rss.rss_code;
     
 
-    
+    setTimeout( function(){ 
+      console.log(rssCode + ": time out");
+      onDone(new Error(rssCode + ": time out"));
+    }, 60*1000*1 );
+
     var req = request(link, function (error, response, body) {
       if(error){
         console.log(rssCode + ": "+ error);
@@ -28,8 +32,9 @@ module.exports = function(mongoose , queue){
       var stream = this;
       if (res.statusCode != 200){
         console.log(rssCode + ": "+ 'Bad status code');
+        onDone(new Error(rssCode + ": Bad status code"));
        
-        return this.emit('error', new Error('Bad status code'));
+        return; 
       } 
       
       stream.pipe(feedparser);
@@ -89,17 +94,15 @@ module.exports = function(mongoose , queue){
 
   
 
-  queue.process('requestRssAndSave', function (job, done){
-    
+  queue.process('requestRssAndSave', 3, function (job, done){
     requestAndSave(job.data, function(err){
       if(err){
         console.log(err);    
+        done && done(err);
+      }else{
+        done && done();  
       }
-      done && done();
     });
-      
-    
-    
   })
 
 
