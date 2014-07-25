@@ -14,10 +14,10 @@ module.exports = function(mongoose , queue){
     var rssCode = rss.rss_code;
     
 
-    setTimeout( function(){ 
-      console.log(rssCode + ": time out");
-      onDone(new Error(rssCode + ": time out"));
-    }, 60*1000*1 );
+    // setTimeout( function(){ 
+    //   console.log(rssCode + ": time out");
+    //   onDone(new Error(rssCode + ": time out"));
+    // }, 60*1000*1 );
 
     var req = request(link, function (error, response, body) {
       if(error){
@@ -118,7 +118,7 @@ module.exports = function(mongoose , queue){
       }
     });
   }
-  return new CronJob('00 00 * * * *', pullRss, null, false);
+  return new CronJob('00 05 * * * *', pullRss, null, false);
 }
 
 
