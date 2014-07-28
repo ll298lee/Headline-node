@@ -5,7 +5,7 @@ module.exports = {
   processPost: function(post, pressCode){
     switch(pressCode) {
     case 15800: //蘋果
-      post.description = post.title;
+      post.description = "";
       post.image = "";
       return post;
 
@@ -36,12 +36,12 @@ module.exports = {
       return post;
 
     case 15802: //自由
-      post.description = post.title;
+      post.description = "";
       post.image = "";
       return post;
 
     case 15803://中時
-      post.description = post.title;
+      post.description = "";
       post.image = "";        
       return post;
 
